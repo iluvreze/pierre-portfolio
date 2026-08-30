@@ -1,4 +1,5 @@
 import './App.css'
+import profileImg from './assets/profile.jpg'
 
 import {
   motion,
@@ -18,18 +19,20 @@ import {
 const ease = [0.22, 1, 0.36, 1]
 
 
-const reveal = {
+const blurReveal = {
   hidden: {
     opacity: 0,
     y: 28,
+    filter: 'blur(12px)',
   },
 
   visible: {
     opacity: 1,
     y: 0,
+    filter: 'blur(0px)',
 
     transition: {
-      duration: 0.85,
+      duration: 1,
       ease,
     },
   },
@@ -76,6 +79,25 @@ const projects = [
     description:
       'A web-based management system combining visual interface design with inventory functionality, database integration, and responsive frontend development.',
     tech: 'HTML · CSS · JavaScript · PHP · MySQL',
+  },
+]
+
+
+const education = [
+  {
+    number: '01',
+    institution: 'University of Santo Tomas',
+    degree: 'Bachelor of Science in Information Technology',
+    focus: 'Web & Mobile App Development',
+    year: '2026',
+  },
+
+  {
+    number: '02',
+    institution: 'Senior High School',
+    degree: 'Music, Arts & Design',
+    focus: 'Creative Design · Visual Communication · Arts',
+    year: '2022',
   },
 ]
 
@@ -196,7 +218,6 @@ function App() {
 
         animate={{
           rotate: projectHover ? 45 : 0,
-          scale: projectHover ? 1 : 1,
         }}
 
         transition={{
@@ -235,12 +256,6 @@ function App() {
           whileHover={{
             x: 3,
           }}
-
-          transition={{
-            type: 'spring',
-            stiffness: 300,
-            damping: 22,
-          }}
         >
           P/C<span>®</span>
         </motion.a>
@@ -253,12 +268,16 @@ function App() {
 
         <div className="nav-links">
 
+          <a href="#profile">
+            Profile
+          </a>
+
           <a href="#work">
             Work
           </a>
 
-          <a href="#about">
-            About
+          <a href="#education">
+            Education
           </a>
 
           <a href="#contact">
@@ -309,8 +328,15 @@ function App() {
           >
 
             <div>
-              <span>Frontend Developer</span>
-              <span>UI/UX Designer</span>
+
+              <span>
+                Frontend Developer
+              </span>
+
+              <span>
+                UI/UX Designer
+              </span>
+
             </div>
 
 
@@ -320,8 +346,8 @@ function App() {
                 Manila, Philippines
               </span>
 
-              <span>
-                Available for Opportunities
+              <span className="hero-available">
+                ● Open for opportunities & freelance
               </span>
 
             </div>
@@ -459,23 +485,13 @@ function App() {
 
 
             <motion.a
-              href="#work"
+              href="#profile"
 
               whileHover={{
                 x: 7,
               }}
-
-              whileTap={{
-                scale: 0.97,
-              }}
-
-              transition={{
-                type: 'spring',
-                stiffness: 300,
-                damping: 20,
-              }}
             >
-              Selected Work ↓
+              Meet Me ↓
             </motion.a>
 
           </motion.div>
@@ -494,7 +510,7 @@ function App() {
               ease: 'easeInOut',
             }}
           >
-            PCT / 01
+            PCT / 2026
           </motion.div>
 
         </motion.div>
@@ -502,7 +518,211 @@ function App() {
       </section>
 
 
-      {/* WORK */}
+      {/* =====================================================
+          01 / PROFILE
+      ===================================================== */}
+
+      <section
+        className="profile"
+        id="profile"
+      >
+
+        <SectionTop
+          left="01 / Profile"
+          right="Developer × Designer"
+        />
+
+
+        <div className="profile-layout">
+
+          <motion.div
+            className="profile-visual"
+
+            initial={{
+              opacity: 0,
+              scale: 0.96,
+              filter: 'blur(16px)',
+            }}
+
+            whileInView={{
+              opacity: 1,
+              scale: 1,
+              filter: 'blur(0px)',
+            }}
+
+            viewport={{
+              once: true,
+              amount: 0.3,
+            }}
+
+            transition={{
+              duration: 1.1,
+              ease,
+            }}
+          >
+
+            <div className="profile-grid"></div>
+
+
+            <motion.div
+              className="profile-image-wrap"
+
+              initial={{
+                opacity: 0,
+                y: 35,
+                scale: 0.96,
+                filter: 'blur(12px)',
+              }}
+
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                filter: 'blur(0px)',
+              }}
+
+              viewport={{
+                once: true,
+              }}
+
+              transition={{
+                duration: 1,
+                delay: 0.15,
+                ease,
+              }}
+            >
+
+              <img
+                src={profileImg}
+                alt="Pierre Carl Tolentino"
+                className="profile-image"
+              />
+
+              <div className="profile-image-overlay"></div>
+
+            </motion.div>
+
+          </motion.div>
+
+
+          <motion.div
+            className="profile-content"
+
+            variants={stagger}
+
+            initial="hidden"
+
+            whileInView="visible"
+
+            viewport={{
+              once: true,
+              amount: 0.25,
+            }}
+          >
+
+            <motion.p
+              className="profile-label"
+              variants={blurReveal}
+            >
+              A little about me
+            </motion.p>
+
+
+            <motion.h2
+              variants={blurReveal}
+            >
+              I build with
+              <span> curiosity,</span>
+              <em> intention,</em>
+              and detail.
+            </motion.h2>
+
+
+            <motion.p
+              className="profile-description"
+              variants={blurReveal}
+            >
+              I&apos;m Pierre, an Information Technology
+              graduate focused on frontend development,
+              interface design, and creating digital
+              products that feel considered rather than
+              simply functional.
+            </motion.p>
+
+
+            <motion.div
+              className="profile-availability"
+              variants={blurReveal}
+            >
+
+              <div className="availability-status">
+
+                <motion.span
+                  animate={{
+                    scale: [1, 1.35, 1],
+                    opacity: [0.65, 1, 0.65],
+                  }}
+
+                  transition={{
+                    duration: 2.4,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                />
+
+                <p>
+                  Currently available
+                </p>
+
+              </div>
+
+
+              <h3>
+                Open to full-time roles,
+                <em> freelance projects,</em>
+                and creative collaborations.
+              </h3>
+
+            </motion.div>
+
+
+            <motion.div
+              className="profile-facts"
+              variants={blurReveal}
+            >
+
+              <div>
+                <span>01</span>
+                <p>Frontend Development</p>
+              </div>
+
+              <div>
+                <span>02</span>
+                <p>UI / UX Design</p>
+              </div>
+
+              <div>
+                <span>03</span>
+                <p>Visual Design</p>
+              </div>
+
+              <div>
+                <span>04</span>
+                <p>Freelance Projects</p>
+              </div>
+
+            </motion.div>
+
+          </motion.div>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          02 / WORK
+      ===================================================== */}
 
       <section
         className="work"
@@ -510,38 +730,204 @@ function App() {
       >
 
         <SectionTop
-          left="01 / Selected Work"
+          left="02 / Selected Work"
           right="A selection of digital products"
         />
 
 
+        <motion.div
+          className="work-intro"
+
+          initial={{
+            opacity: 0,
+            y: 24,
+            filter: 'blur(10px)',
+          }}
+
+          whileInView={{
+            opacity: 1,
+            y: 0,
+            filter: 'blur(0px)',
+          }}
+
+          viewport={{
+            once: true,
+          }}
+
+          transition={{
+            duration: 0.9,
+            ease,
+          }}
+        >
+
+          <p>
+            Selected projects across development,
+            interface design, and digital product work.
+          </p>
+
+        </motion.div>
+
+
         <div className="projects">
 
-          {projects.map(
-            (project) => (
+          {projects.map((project) => (
 
-              <Project
-                key={project.number}
-                project={project}
+            <Project
+              key={project.number}
+              project={project}
 
-                onEnter={() => {
-                  setProjectHover(true)
-                }}
+              onEnter={() => {
+                setProjectHover(true)
+              }}
 
-                onLeave={() => {
-                  setProjectHover(false)
-                }}
-              />
+              onLeave={() => {
+                setProjectHover(false)
+              }}
+            />
 
-            )
-          )}
+          ))}
 
         </div>
 
       </section>
 
 
-      {/* STATEMENT */}
+      {/* =====================================================
+          03 / EDUCATION
+      ===================================================== */}
+
+      <section
+        className="education"
+        id="education"
+      >
+
+        <SectionTop
+          left="03 / Education"
+          right="Academic Background"
+        />
+
+
+        <motion.div
+          className="education-intro"
+
+          initial={{
+            opacity: 0,
+            y: 30,
+            filter: 'blur(12px)',
+          }}
+
+          whileInView={{
+            opacity: 1,
+            y: 0,
+            filter: 'blur(0px)',
+          }}
+
+          viewport={{
+            once: true,
+            amount: 0.3,
+          }}
+
+          transition={{
+            duration: 1,
+            ease,
+          }}
+        >
+
+          <h2>
+            Technology shaped
+            <span> the craft.</span>
+          </h2>
+
+
+          <p>
+            A technical education supported by a
+            creative foundation gives me a perspective
+            that combines structure, technology,
+            and visual thinking.
+          </p>
+
+        </motion.div>
+
+
+        <div className="education-list">
+
+          {education.map((item, index) => (
+
+            <motion.article
+              className="education-row"
+              key={item.number}
+
+              initial={{
+                opacity: 0,
+                y: 28,
+                filter: 'blur(10px)',
+              }}
+
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                filter: 'blur(0px)',
+              }}
+
+              viewport={{
+                once: true,
+                amount: 0.4,
+              }}
+
+              transition={{
+                duration: 0.9,
+                delay: index * 0.08,
+                ease,
+              }}
+
+              whileHover={{
+                x: 8,
+              }}
+            >
+
+              <span className="education-number">
+                {item.number}
+              </span>
+
+
+              <div className="education-main">
+
+                <p>
+                  {item.institution}
+                </p>
+
+                <h3>
+                  {item.degree}
+                </h3>
+
+              </div>
+
+
+              <div className="education-focus">
+
+                <p>
+                  {item.focus}
+                </p>
+
+              </div>
+
+
+              <span className="education-year">
+                {item.year}
+              </span>
+
+            </motion.article>
+
+          ))}
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          PHILOSOPHY
+      ===================================================== */}
 
       <section className="statement">
 
@@ -551,11 +937,13 @@ function App() {
           initial={{
             opacity: 0,
             y: 45,
+            filter: 'blur(12px)',
           }}
 
           whileInView={{
             opacity: 1,
             y: 0,
+            filter: 'blur(0px)',
           }}
 
           viewport={{
@@ -569,48 +957,12 @@ function App() {
           }}
         >
 
-          <motion.span
-            initial={{
-              opacity: 0,
-            }}
-
-            whileInView={{
-              opacity: 1,
-            }}
-
-            viewport={{
-              once: true,
-            }}
-
-            transition={{
-              duration: 0.8,
-            }}
-          >
+          <span>
             PCT / PHILOSOPHY
-          </motion.span>
+          </span>
 
 
-          <motion.h2
-            initial={{
-              opacity: 0,
-              scale: 0.97,
-            }}
-
-            whileInView={{
-              opacity: 1,
-              scale: 1,
-            }}
-
-            viewport={{
-              once: true,
-              amount: 0.4,
-            }}
-
-            transition={{
-              duration: 1,
-              ease,
-            }}
-          >
+          <h2>
             Good design should feel
 
             <motion.em
@@ -637,37 +989,22 @@ function App() {
               effortless.
             </motion.em>
 
-          </motion.h2>
+          </h2>
 
 
-          <motion.p
-            initial={{
-              opacity: 0,
-            }}
-
-            whileInView={{
-              opacity: 1,
-            }}
-
-            viewport={{
-              once: true,
-            }}
-
-            transition={{
-              duration: 0.8,
-              delay: 0.25,
-            }}
-          >
+          <p>
             Clear structure. Purposeful motion.
             Thoughtful interaction.
-          </motion.p>
+          </p>
 
         </motion.div>
 
       </section>
 
 
-      {/* ABOUT */}
+      {/* =====================================================
+          04 / APPROACH
+      ===================================================== */}
 
       <section
         className="about"
@@ -675,7 +1012,7 @@ function App() {
       >
 
         <SectionTop
-          left="02 / About"
+          left="04 / Approach"
           right="Design × Development"
         />
 
@@ -697,23 +1034,23 @@ function App() {
             }}
           >
 
-            <motion.h2 variants={reveal}>
+            <motion.h2 variants={blurReveal}>
               DESIGN WAS
             </motion.h2>
 
-            <motion.h2 variants={reveal}>
+            <motion.h2 variants={blurReveal}>
               THE BEGINNING.
             </motion.h2>
 
             <motion.h2
-              variants={reveal}
+              variants={blurReveal}
               className="about-serif"
             >
               Code became
             </motion.h2>
 
             <motion.h2
-              variants={reveal}
+              variants={blurReveal}
               className="about-serif"
             >
               the medium.
@@ -728,11 +1065,13 @@ function App() {
             initial={{
               opacity: 0,
               y: 30,
+              filter: 'blur(10px)',
             }}
 
             whileInView={{
               opacity: 1,
               y: 0,
+              filter: 'blur(0px)',
             }}
 
             viewport={{
@@ -740,27 +1079,27 @@ function App() {
             }}
 
             transition={{
-              duration: 0.9,
+              duration: 1,
               ease,
             }}
           >
 
             <p>
-              I&apos;m Pierre, an Information Technology
-              graduate specializing in Web and Mobile Development.
+              My background in visual design influenced
+              how I approach development.
             </p>
 
             <p>
-              My background in visual design influenced how
-              I approach development. I think about interfaces
-              not only as functional systems, but as experiences
-              that should feel clear, responsive, and intentional.
+              I think about interfaces not only as
+              functional systems, but as experiences
+              that should feel clear, responsive,
+              and intentional.
             </p>
 
             <p>
-              I enjoy transforming ideas, wireframes, and concepts
-              into polished digital products through design and
-              frontend development.
+              I enjoy transforming ideas, wireframes,
+              and concepts into polished digital
+              products through design and development.
             </p>
 
           </motion.div>
@@ -770,12 +1109,14 @@ function App() {
       </section>
 
 
-      {/* CAPABILITIES */}
+      {/* =====================================================
+          05 / CAPABILITIES
+      ===================================================== */}
 
       <section className="capabilities">
 
         <SectionTop
-          left="03 / Capabilities"
+          left="05 / Capabilities"
           right="What I Do"
         />
 
@@ -811,12 +1152,14 @@ function App() {
       </section>
 
 
-      {/* EXPERIENCE */}
+      {/* =====================================================
+          06 / EXPERIENCE
+      ===================================================== */}
 
       <section className="experience">
 
         <SectionTop
-          left="Experience"
+          left="06 / Experience"
           right="2026"
         />
 
@@ -827,11 +1170,13 @@ function App() {
           initial={{
             opacity: 0,
             y: 30,
+            filter: 'blur(10px)',
           }}
 
           whileInView={{
             opacity: 1,
             y: 0,
+            filter: 'blur(0px)',
           }}
 
           viewport={{
@@ -839,7 +1184,7 @@ function App() {
           }}
 
           transition={{
-            duration: 0.85,
+            duration: 0.9,
             ease,
           }}
         >
@@ -853,12 +1198,6 @@ function App() {
             <motion.h3
               whileHover={{
                 x: 5,
-              }}
-
-              transition={{
-                type: 'spring',
-                stiffness: 250,
-                damping: 22,
               }}
             >
               Academy Delegate
@@ -882,7 +1221,9 @@ function App() {
       </section>
 
 
-      {/* CONTACT */}
+      {/* =====================================================
+          07 / CONTACT
+      ===================================================== */}
 
       <section
         className="contact"
@@ -890,67 +1231,141 @@ function App() {
       >
 
         <SectionTop
-          left="04 / Contact"
-          right="● Available for opportunities"
+          left="07 / Contact"
+          right="● Open for work & freelance"
           accentRight
         />
 
 
-        <div className="contact-content">
+        <div className="contact-layout">
 
-          <div className="contact-mask">
+          <div className="contact-heading">
 
-            <motion.h2
-              initial={{
-                y: '110%',
-              }}
+            <div className="contact-mask">
 
-              whileInView={{
-                y: 0,
-              }}
+              <motion.h2
+                initial={{
+                  y: '110%',
+                  opacity: 0,
+                  filter: 'blur(10px)',
+                }}
 
-              viewport={{
-                once: true,
-              }}
+                whileInView={{
+                  y: 0,
+                  opacity: 1,
+                  filter: 'blur(0px)',
+                }}
 
-              transition={{
-                duration: 1,
-                ease,
-              }}
-            >
-              LET&apos;S BUILD
-            </motion.h2>
+                viewport={{
+                  once: true,
+                  amount: 0.5,
+                }}
+
+                transition={{
+                  duration: 1,
+                  ease,
+                }}
+              >
+                LET&apos;S BUILD
+              </motion.h2>
+
+            </div>
+
+
+            <div className="contact-mask">
+
+              <motion.h2
+                className="contact-serif"
+
+                initial={{
+                  y: '110%',
+                  opacity: 0,
+                  filter: 'blur(10px)',
+                }}
+
+                whileInView={{
+                  y: 0,
+                  opacity: 1,
+                  filter: 'blur(0px)',
+                }}
+
+                viewport={{
+                  once: true,
+                  amount: 0.5,
+                }}
+
+                transition={{
+                  duration: 1,
+                  delay: 0.08,
+                  ease,
+                }}
+              >
+                something meaningful.
+              </motion.h2>
+
+            </div>
 
           </div>
 
 
-          <div className="contact-mask">
+          <motion.div
+            className="contact-side"
 
-            <motion.h2
-              className="contact-serif"
+            initial={{
+              opacity: 0,
+              y: 24,
+              filter: 'blur(8px)',
+            }}
 
-              initial={{
-                y: '110%',
-              }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              filter: 'blur(0px)',
+            }}
 
-              whileInView={{
-                y: 0,
-              }}
+            viewport={{
+              once: true,
+              amount: 0.4,
+            }}
 
-              viewport={{
-                once: true,
+            transition={{
+              duration: 0.9,
+              delay: 0.15,
+              ease,
+            }}
+          >
+
+            <p className="contact-eyebrow">
+              HAVE SOMETHING IN MIND?
+            </p>
+
+
+            <p className="contact-description">
+              Whether it&apos;s a full-time opportunity,
+              freelance project, website, interface, or
+              creative idea, I&apos;m open to building
+              something thoughtful together.
+            </p>
+
+
+            <motion.a
+              href="mailto:carlpierre231@gmail.com"
+              className="contact-email"
+
+              whileHover={{
+                x: 5,
               }}
 
               transition={{
-                duration: 1,
-                delay: 0.08,
-                ease,
+                type: 'spring',
+                stiffness: 300,
+                damping: 20,
               }}
             >
-              something meaningful.
-            </motion.h2>
+              Start a conversation ↗
+            </motion.a>
 
-          </div>
+          </motion.div>
 
         </div>
 
@@ -960,7 +1375,7 @@ function App() {
 
           initial={{
             opacity: 0,
-            y: 25,
+            y: 20,
           }}
 
           whileInView={{
@@ -974,46 +1389,44 @@ function App() {
 
           transition={{
             duration: 0.8,
-            delay: 0.2,
+            delay: 0.25,
             ease,
           }}
         >
 
-          <motion.a
+          <a
             href="mailto:carlpierre231@gmail.com"
-
-            whileHover={{
-              x: 6,
-            }}
-
-            transition={{
-              type: 'spring',
-              stiffness: 300,
-              damping: 20,
-            }}
+            className="contact-address"
           >
             carlpierre231@gmail.com ↗
-          </motion.a>
+          </a>
 
 
           <div className="social-links">
 
             <motion.a
-              href="#"
-              whileHover={{
-                y: -3,
-              }}
-            >
-              LinkedIn ↗
-            </motion.a>
+              href="https://github.com/iluvreze"
+              target="_blank"
+              rel="noreferrer"
 
-            <motion.a
-              href="#"
               whileHover={{
                 y: -3,
               }}
             >
               GitHub ↗
+            </motion.a>
+
+
+            <motion.a
+              href="https://www.linkedin.com/in/pierre-carl-tolentino/"
+              target="_blank"
+              rel="noreferrer"
+
+              whileHover={{
+                y: -3,
+              }}
+            >
+              LinkedIn ↗
             </motion.a>
 
           </div>
@@ -1064,10 +1477,12 @@ function SectionTop({
 
       initial={{
         opacity: 0,
+        filter: 'blur(8px)',
       }}
 
       whileInView={{
         opacity: 1,
+        filter: 'blur(0px)',
       }}
 
       viewport={{
@@ -1201,42 +1616,18 @@ function Project({
       }}
 
       onMouseEnter={onEnter}
-
       onMouseLeave={onLeave}
     >
 
       <div className="project-top">
 
-        <motion.span
-          className="project-number"
-
-          initial={{
-            opacity: 0,
-            x: -15,
-          }}
-
-          whileInView={{
-            opacity: 1,
-            x: 0,
-          }}
-
-          viewport={{
-            once: true,
-          }}
-
-          transition={{
-            duration: 0.7,
-            ease,
-          }}
-        >
+        <span className="project-number">
           {project.number}
-        </motion.span>
-
+        </span>
 
         <span className="project-type">
           {project.type}
         </span>
-
 
         <span className="project-year">
           {project.year}
@@ -1255,11 +1646,6 @@ function Project({
 
         whileHover={{
           scale: 0.994,
-        }}
-
-        transition={{
-          duration: 0.45,
-          ease,
         }}
       >
 
@@ -1289,12 +1675,6 @@ function Project({
           whileHover={{
             x: 10,
           }}
-
-          transition={{
-            type: 'spring',
-            stiffness: 250,
-            damping: 22,
-          }}
         >
           {project.title}
         </motion.h2>
@@ -1306,43 +1686,16 @@ function Project({
             View Case Study
           </span>
 
-          <motion.span
-            whileHover={{
-              x: 4,
-              y: -4,
-            }}
-          >
+          <span>
             ↗
-          </motion.span>
+          </span>
 
         </div>
 
       </motion.div>
 
 
-      <motion.div
-        className="project-details"
-
-        initial={{
-          opacity: 0,
-          y: 18,
-        }}
-
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-
-        viewport={{
-          once: true,
-        }}
-
-        transition={{
-          duration: 0.8,
-          delay: 0.1,
-          ease,
-        }}
-      >
+      <div className="project-details">
 
         <p className="project-description">
           {project.description}
@@ -1353,7 +1706,7 @@ function Project({
           {project.tech}
         </p>
 
-      </motion.div>
+      </div>
 
     </motion.article>
   )
@@ -1376,11 +1729,13 @@ function Capability({
       initial={{
         opacity: 0,
         y: 20,
+        filter: 'blur(8px)',
       }}
 
       whileInView={{
         opacity: 1,
         y: 0,
+        filter: 'blur(0px)',
       }}
 
       viewport={{
@@ -1400,11 +1755,6 @@ function Capability({
           ? 10
           : 0,
       }}
-
-      transition={{
-        duration: 0.4,
-        ease,
-      }}
     >
 
       <span className="capability-number">
@@ -1412,15 +1762,9 @@ function Capability({
       </span>
 
 
-      <motion.h3
-        animate={{
-          opacity: hovered
-            ? 1
-            : 0.92,
-        }}
-      >
+      <h3>
         {title}
-      </motion.h3>
+      </h3>
 
 
       <motion.p
@@ -1432,11 +1776,6 @@ function Capability({
           opacity: hovered
             ? 1
             : 0.7,
-        }}
-
-        transition={{
-          duration: 0.35,
-          ease,
         }}
       >
         {tools}
@@ -1454,11 +1793,6 @@ function Capability({
           y: hovered
             ? -4
             : 0,
-        }}
-
-        transition={{
-          duration: 0.35,
-          ease,
         }}
       >
         ↗
