@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+}
+
+
+html {
+  scroll-behavior: smooth;
+
+  background: #0c0c0b;
+}
+
+
+body {
+  margin: 0;
+
+  min-width: 320px;
+
+  background: #0c0c0b;
+
+  color: #efeee9;
+
+  font-family:
+    'Manrope',
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-weight: 400;
+
+  -webkit-font-smoothing:
+    antialiased;
+
+  -moz-osx-font-smoothing:
+    grayscale;
+
+  text-rendering:
+    optimizeLegibility;
+}
+
+
+body::-webkit-scrollbar {
+  width: 6px;
+}
+
+
+body::-webkit-scrollbar-track {
+  background: #0c0c0b;
+}
+
+
+body::-webkit-scrollbar-thumb {
+  background: #34332e;
+
+  border-radius: 100px;
+}
+
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #706b61;
+}
+
+
+a,
+button {
+  font: inherit;
+}
+
+
+img {
+  display: block;
+
+  max-width: 100%;
+}
+
+
+::selection {
+  background: #c9bfa9;
+
+  color: #0c0c0b;
+}
