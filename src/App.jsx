@@ -2035,7 +2035,7 @@ function Project({
             ) %
             project.images.length
         )
-      }, 3600)
+      }, 2500)
 
     return () => {
       window.clearInterval(timer)
@@ -2230,7 +2230,7 @@ function Project({
                   }}
 
                   transition={{
-                    duration: 0.9,
+                    duration: 0.6,
                     ease,
                   }}
                 />
