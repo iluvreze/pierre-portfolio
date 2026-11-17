@@ -1736,7 +1736,7 @@ a {
   padding:
     34px;
 
-  opacity: 0;
+  opacity: 1;
 
   pointer-events: none;
 
@@ -1748,7 +1748,7 @@ a {
         8,
         8,
         7,
-        0.92
+        0.86
       )
       0%,
 
@@ -1756,47 +1756,25 @@ a {
         8,
         8,
         7,
-        0.72
+        0.64
       )
-      44%,
+      40%,
 
       rgba(
         8,
         8,
         7,
-        0.18
+        0.16
       )
-      78%,
+      74%,
 
       rgba(
         8,
         8,
         7,
-        0.05
+        0.04
       )
       100%
-    );
-
-  transform:
-    translateY(14px);
-
-  transition:
-    opacity
-    0.55s
-    cubic-bezier(
-      0.22,
-      1,
-      0.36,
-      1
-    ),
-
-    transform
-    0.65s
-    cubic-bezier(
-      0.22,
-      1,
-      0.36,
-      1
     );
 }
 
@@ -1836,17 +1814,7 @@ a {
     650px;
 
   transform:
-    translateY(16px);
-
-  transition:
-    transform
-    0.7s
-    cubic-bezier(
-      0.22,
-      1,
-      0.36,
-      1
-    );
+    translateY(0);
 }
 
 
@@ -1979,10 +1947,7 @@ h2 {
 
   pointer-events: none;
 
-  transition:
-    opacity
-    0.4s
-    ease;
+  opacity: 0.82;
 }
 
 
@@ -2035,149 +2000,18 @@ span.active {
 }
 
 
-.project-has-media
-.project-visual-media:hover
-.project-image {
-  transform:
-    scale(1.045);
-
-  filter:
-    brightness(0.52)
-    saturate(0.82);
-}
-
+/* TrackWise remains readable without hover on all devices */
 
 .project-has-media
-.project-visual-media:hover
-.project-media-vignette {
-  background:
-    linear-gradient(
-      180deg,
-
-      rgba(
-        8,
-        8,
-        7,
-        0.18
-      )
-      0%,
-
-      rgba(
-        8,
-        8,
-        7,
-        0.32
-      )
-      48%,
-
-      rgba(
-        8,
-        8,
-        7,
-        0.82
-      )
-      100%
-    );
-}
-
-
-.project-has-media
-.project-visual-media:hover
 .project-overlay {
   opacity: 1;
-
-  transform:
-    translateY(0);
 }
 
 
 .project-has-media
-.project-visual-media:hover
 .project-overlay-main {
   transform:
     translateY(0);
-}
-
-
-.project-has-media
-.project-visual-media:hover
-.project-slide-status {
-  opacity: 0;
-}
-
-
-.project-has-media
-.project-details {
-  margin-top: 34px;
-}
-
-
-/* Touch devices do not depend on hover */
-
-@media (
-  hover: none
-) {
-
-  .project-has-media
-  .project-overlay {
-    opacity: 1;
-
-    transform:
-      translateY(0);
-
-    background:
-      linear-gradient(
-        180deg,
-
-        rgba(
-          8,
-          8,
-          7,
-          0.05
-        )
-        0%,
-
-        rgba(
-          8,
-          8,
-          7,
-          0.14
-        )
-        34%,
-
-        rgba(
-          8,
-          8,
-          7,
-          0.9
-        )
-        100%
-      );
-  }
-
-
-  .project-has-media
-  .project-overlay-main {
-    margin-top: auto;
-
-    transform:
-      translateY(0);
-  }
-
-
-  .project-has-media
-  .project-overlay-top {
-    opacity: 0.72;
-  }
-
-
-  .project-has-media
-  .project-slide-status {
-    top: 22px;
-    right: 22px;
-    bottom: auto;
-  }
-
 }
 
 

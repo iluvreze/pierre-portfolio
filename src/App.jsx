@@ -2010,19 +2010,13 @@ function Project({
   const [activeImage, setActiveImage] =
     useState(0)
 
-  const [isHovered, setIsHovered] =
-    useState(false)
-
   const hasImages =
     Array.isArray(project.images) &&
     project.images.length > 0
 
 
   useEffect(() => {
-    if (
-      !hasImages ||
-      isHovered
-    ) {
+    if (!hasImages) {
       return undefined
     }
 
@@ -2042,7 +2036,6 @@ function Project({
     }
   }, [
     hasImages,
-    isHovered,
     project.images,
   ])
 
@@ -2088,8 +2081,6 @@ function Project({
 
 
   const handleMouseEnter = () => {
-    setIsHovered(true)
-
     if (onEnter) {
       onEnter()
     }
@@ -2097,8 +2088,6 @@ function Project({
 
 
   const handleMouseLeave = () => {
-    setIsHovered(false)
-
     if (onLeave) {
       onLeave()
     }
@@ -2217,7 +2206,7 @@ function Project({
 
                   animate={{
                     opacity: 1,
-                    scale: 1,
+                    scale: [1.018, 1],
                     filter:
                       'blur(0px)',
                   }}
@@ -2243,7 +2232,30 @@ function Project({
             <div className="project-media-vignette" />
 
 
-            <div className="project-overlay">
+            <motion.div
+              className="project-overlay"
+
+              initial={{
+                opacity: 0,
+                y: 18,
+              }}
+
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+
+              viewport={{
+                once: true,
+                amount: 0.35,
+              }}
+
+              transition={{
+                duration: 0.8,
+                delay: 0.15,
+                ease,
+              }}
+            >
 
               <div className="project-overlay-top">
 
@@ -2294,7 +2306,7 @@ function Project({
 
               </div>
 
-            </div>
+            </motion.div>
 
 
             <div className="project-slide-status">
