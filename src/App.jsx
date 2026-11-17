@@ -104,6 +104,11 @@ const projects = [
       drafters3,
       drafters4,
     ],
+
+    containImages: [
+      drafters3,
+      drafters4,
+    ],
   },
 
   {
@@ -2027,6 +2032,22 @@ function Project({
     project.images.length > 0
 
 
+  const currentImage =
+    hasImages
+      ? project.images[activeImage]
+      : null
+
+
+  const preserveImageRatio =
+    Boolean(
+      currentImage &&
+      Array.isArray(project.containImages) &&
+      project.containImages.includes(
+        currentImage
+      )
+    )
+
+
   useEffect(() => {
     if (!hasImages) {
       return undefined
@@ -2191,41 +2212,46 @@ function Project({
               >
 
                 <motion.img
-                  key={
-                    project.images[
-                      activeImage
-                    ]
-                  }
+                  key={currentImage}
 
-                  src={
-                    project.images[
-                      activeImage
-                    ]
-                  }
+                  src={currentImage}
 
                   alt={`${project.title} screenshot ${
                     activeImage + 1
                   }`}
 
-                  className="project-image"
+                  className={`project-image ${
+                    preserveImageRatio
+                      ? 'project-image-contain'
+                      : ''
+                  }`}
 
                   initial={{
                     opacity: 0,
-                    scale: 1.035,
+                    scale:
+                      preserveImageRatio
+                        ? 1
+                        : 1.035,
                     filter:
                       'blur(8px)',
                   }}
 
                   animate={{
                     opacity: 1,
-                    scale: [1.018, 1],
+                    scale:
+                      preserveImageRatio
+                        ? 1
+                        : [1.018, 1],
                     filter:
                       'blur(0px)',
                   }}
 
                   exit={{
                     opacity: 0,
-                    scale: 0.985,
+                    scale:
+                      preserveImageRatio
+                        ? 1
+                        : 0.985,
                     filter:
                       'blur(5px)',
                   }}

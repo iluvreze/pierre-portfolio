@@ -1674,6 +1674,18 @@ a {
 }
 
 
+
+.project-image-contain {
+  object-fit: contain;
+
+  object-position:
+    center;
+
+  background:
+    #090908;
+}
+
+
 .project-media-vignette {
   position: absolute;
 
@@ -3506,6 +3518,14 @@ span.active {
   .project-image {
     object-position:
       top center;
+  }
+
+
+  .project-image-contain {
+    object-fit: contain;
+
+    object-position:
+      center;
   }
 
 
