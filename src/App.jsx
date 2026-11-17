@@ -9,6 +9,11 @@ import trackwise2 from './assets/trackwise-2.png'
 import trackwise3 from './assets/trackwise-3.png'
 import trackwise4 from './assets/trackwise-4.png'
 
+import drafters1 from './assets/df1.png'
+import drafters2 from './assets/df2.png'
+import drafters3 from './assets/df3.jpg'
+import drafters4 from './assets/df4.jpg'
+
 import {
   AnimatePresence,
   motion,
@@ -84,14 +89,21 @@ const projects = [
   {
     number: '02',
     title: 'Drafters Autotech',
-    type: 'Inventory Management System',
+    type: 'Client Inventory Management System',
     year: '2026',
 
     description:
-      'A clean and responsive inventory experience built around structured workflows, user-centered navigation, wireframing, and frontend implementation.',
+      'An inventory management website developed as a Software Engineering academic project for a client business. The system was designed to organize inventory records, improve stock monitoring, and support more efficient day-to-day inventory management.',
 
     tech:
       'Figma · HTML5 · CSS3 · JavaScript',
+
+    images: [
+      drafters1,
+      drafters2,
+      drafters3,
+      drafters4,
+    ],
   },
 
   {
