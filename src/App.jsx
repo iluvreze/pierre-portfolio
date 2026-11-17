@@ -3,7 +3,14 @@ import './App.css'
 import profileImg from './assets/profile.jpg'
 import ustLogo from './assets/ust-logo.png'
 
+import trackwise1 from './assets/trackwise-1.png'
+import trackwise21 from './assets/trackwise-2.1.png'
+import trackwise2 from './assets/trackwise-2.png'
+import trackwise3 from './assets/trackwise-3.png'
+import trackwise4 from './assets/trackwise-4.png'
+
 import {
+  AnimatePresence,
   motion,
   useMotionValue,
   useSpring,
@@ -64,6 +71,14 @@ const projects = [
 
     tech:
       'React · JavaScript · Node.js · UI/UX',
+
+    images: [
+      trackwise1,
+      trackwise21,
+      trackwise2,
+      trackwise3,
+      trackwise4,
+    ],
   },
 
   {
@@ -1992,6 +2007,45 @@ function Project({
   const ref =
     useRef(null)
 
+  const [activeImage, setActiveImage] =
+    useState(0)
+
+  const [isHovered, setIsHovered] =
+    useState(false)
+
+  const hasImages =
+    Array.isArray(project.images) &&
+    project.images.length > 0
+
+
+  useEffect(() => {
+    if (
+      !hasImages ||
+      isHovered
+    ) {
+      return undefined
+    }
+
+    const timer =
+      window.setInterval(() => {
+        setActiveImage(
+          (current) =>
+            (
+              current + 1
+            ) %
+            project.images.length
+        )
+      }, 3600)
+
+    return () => {
+      window.clearInterval(timer)
+    }
+  }, [
+    hasImages,
+    isHovered,
+    project.images,
+  ])
+
 
   const {
     scrollYProgress,
@@ -2033,9 +2087,31 @@ function Project({
     )
 
 
+  const handleMouseEnter = () => {
+    setIsHovered(true)
+
+    if (onEnter) {
+      onEnter()
+    }
+  }
+
+
+  const handleMouseLeave = () => {
+    setIsHovered(false)
+
+    if (onLeave) {
+      onLeave()
+    }
+  }
+
+
   return (
     <motion.article
-      className="project"
+      className={`project ${
+        hasImages
+          ? 'project-has-media'
+          : ''
+      }`}
 
       ref={ref}
 
@@ -2059,9 +2135,13 @@ function Project({
         ease,
       }}
 
-      onMouseEnter={onEnter}
+      onMouseEnter={
+        handleMouseEnter
+      }
 
-      onMouseLeave={onLeave}
+      onMouseLeave={
+        handleMouseLeave
+      }
     >
 
       <div className="project-top">
@@ -2084,7 +2164,11 @@ function Project({
 
 
       <motion.div
-        className="project-visual"
+        className={`project-visual ${
+          hasImages
+            ? 'project-visual-media'
+            : ''
+        }`}
 
         style={{
           y: visualY,
@@ -2096,50 +2180,216 @@ function Project({
         }}
       >
 
-        <div className="visual-grid" />
+        {hasImages ? (
+          <>
+            <div className="project-slideshow">
 
-        <div className="project-shine" />
+              <AnimatePresence
+                initial={false}
+                mode="sync"
+              >
+
+                <motion.img
+                  key={
+                    project.images[
+                      activeImage
+                    ]
+                  }
+
+                  src={
+                    project.images[
+                      activeImage
+                    ]
+                  }
+
+                  alt={`${project.title} screenshot ${
+                    activeImage + 1
+                  }`}
+
+                  className="project-image"
+
+                  initial={{
+                    opacity: 0,
+                    scale: 1.035,
+                    filter:
+                      'blur(8px)',
+                  }}
+
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                    filter:
+                      'blur(0px)',
+                  }}
+
+                  exit={{
+                    opacity: 0,
+                    scale: 0.985,
+                    filter:
+                      'blur(5px)',
+                  }}
+
+                  transition={{
+                    duration: 0.9,
+                    ease,
+                  }}
+                />
+
+              </AnimatePresence>
+
+            </div>
 
 
-        <div className="visual-top">
-
-          <span>
-            P/C PROJECT
-          </span>
+            <div className="project-media-vignette" />
 
 
-          <span>
-            {project.number}
-          </span>
+            <div className="project-overlay">
 
-        </div>
+              <div className="project-overlay-top">
 
+                <span>
+                  P/C PROJECT
+                </span>
 
-        <motion.h2
-          style={{
-            y: titleY,
-          }}
+                <span>
+                  {project.number}
+                </span>
 
-          whileHover={{
-            x: 10,
-          }}
-        >
-          {project.title}
-        </motion.h2>
+              </div>
 
 
-        <div className="visual-bottom">
+              <div className="project-overlay-main">
 
-          <span>
-            View Case Study
-          </span>
+                <p className="project-overlay-kicker">
+                  {project.type}
+                </p>
 
 
-          <span>
-            ↗
-          </span>
+                <h2>
+                  {project.title}
+                </h2>
 
-        </div>
+
+                <p className="project-overlay-description">
+                  {project.description}
+                </p>
+
+
+                <p className="project-overlay-tech">
+                  {project.tech}
+                </p>
+
+              </div>
+
+
+              <div className="project-overlay-bottom">
+
+                <span>
+                  Project Preview
+                </span>
+
+                <span>
+                  View Case Study ↗
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div className="project-slide-status">
+
+              <span className="project-slide-count">
+                {String(
+                  activeImage + 1
+                ).padStart(
+                  2,
+                  '0'
+                )}
+                {' / '}
+                {String(
+                  project.images.length
+                ).padStart(
+                  2,
+                  '0'
+                )}
+              </span>
+
+
+              <div className="project-slide-bars">
+
+                {project.images.map(
+                  (
+                    image,
+                    index
+                  ) => (
+
+                    <span
+                      key={image}
+
+                      className={
+                        index ===
+                        activeImage
+                          ? 'active'
+                          : ''
+                      }
+                    />
+
+                  )
+                )}
+
+              </div>
+
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="visual-grid" />
+
+            <div className="project-shine" />
+
+
+            <div className="visual-top">
+
+              <span>
+                P/C PROJECT
+              </span>
+
+
+              <span>
+                {project.number}
+              </span>
+
+            </div>
+
+
+            <motion.h2
+              style={{
+                y: titleY,
+              }}
+
+              whileHover={{
+                x: 10,
+              }}
+            >
+              {project.title}
+            </motion.h2>
+
+
+            <div className="visual-bottom">
+
+              <span>
+                View Case Study
+              </span>
+
+
+              <span>
+                ↗
+              </span>
+
+            </div>
+          </>
+        )}
 
       </motion.div>
 
@@ -2160,6 +2410,7 @@ function Project({
     </motion.article>
   )
 }
+
 
 
 
