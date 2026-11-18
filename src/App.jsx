@@ -1633,68 +1633,323 @@ function App() {
 
         <SectionTop
           left="07 / Experience"
-          right="2026"
+          right="05 Months / 500 Hours"
         />
 
 
-        <motion.div
-          className="experience-row"
+        <motion.article
+          className="experience-card"
 
           initial={{
             opacity: 0,
-            y: 30,
-            filter: 'blur(10px)',
+            y: 46,
+            filter: 'blur(12px)',
+            clipPath:
+              'inset(6% 0% 6% 0%)',
           }}
 
           whileInView={{
             opacity: 1,
             y: 0,
             filter: 'blur(0px)',
+            clipPath:
+              'inset(0% 0% 0% 0%)',
           }}
 
           viewport={{
             once: true,
+            amount: 0.18,
           }}
 
           transition={{
-            duration: 0.9,
+            duration: 1.05,
             ease,
           }}
         >
 
-          <div className="experience-main">
-
-            <span>
-              ACCENTURE
-            </span>
+          <div className="experience-grid-bg" />
 
 
-            <motion.h3
-              whileHover={{
-                x: 5,
+          <motion.div
+            className="experience-chevron"
+
+            initial={{
+              opacity: 0,
+              x: 40,
+              rotate: -8,
+            }}
+
+            whileInView={{
+              opacity: 1,
+              x: 0,
+              rotate: 0,
+            }}
+
+            viewport={{
+              once: true,
+            }}
+
+            transition={{
+              duration: 1.1,
+              delay: 0.25,
+              ease,
+            }}
+          >
+            &gt;
+          </motion.div>
+
+
+          <div className="experience-card-top">
+
+            <motion.div
+              className="accenture-wordmark"
+
+              initial={{
+                opacity: 0,
+                x: -20,
+                filter: 'blur(8px)',
+              }}
+
+              whileInView={{
+                opacity: 1,
+                x: 0,
+                filter: 'blur(0px)',
+              }}
+
+              viewport={{
+                once: true,
+              }}
+
+              transition={{
+                duration: 0.8,
+                delay: 0.12,
+                ease,
+              }}
+              aria-label="Accenture"
+            >
+              <span>
+                accenture
+              </span>
+
+              <i>
+                &gt;
+              </i>
+            </motion.div>
+
+
+            <motion.div
+              className="experience-period"
+
+              initial={{
+                opacity: 0,
+                y: 12,
+              }}
+
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+
+              viewport={{
+                once: true,
+              }}
+
+              transition={{
+                duration: 0.7,
+                delay: 0.2,
+                ease,
               }}
             >
-              Academy Delegate
-            </motion.h3>
+
+              <span>
+                2026
+              </span>
+
+              <span>
+                5 Months
+              </span>
+
+              <span>
+                500 Hours
+              </span>
+
+            </motion.div>
 
           </div>
 
 
-          <div className="experience-side">
+          <div className="experience-content">
 
-            <p>SAP BTP</p>
+            <motion.div
+              className="experience-copy"
 
-            <p>SAP ABAP</p>
+              variants={stagger}
 
-            <p>SAP PI/PO</p>
+              initial="hidden"
 
-            <p>Integration Suite</p>
+              whileInView="visible"
 
-            <p>500 Hours</p>
+              viewport={{
+                once: true,
+                amount: 0.3,
+              }}
+            >
+
+              <motion.p
+                className="experience-role"
+                variants={blurReveal}
+              >
+                SAP BTP TRAINEE / ACADEMY DELEGATE
+              </motion.p>
+
+
+              <motion.h3
+                variants={blurReveal}
+              >
+                Learning enterprise systems
+                <em> beyond the classroom.</em>
+              </motion.h3>
+
+
+              <motion.p
+                className="experience-description"
+                variants={blurReveal}
+              >
+                Completed five months of structured
+                enterprise technology training at
+                Accenture, totaling 500 hours. The
+                program combined guided learning and
+                hands-on exercises across SAP BTP,
+                SAP ABAP, SAP PI/PO, and Integration
+                Suite, strengthening my understanding
+                of cloud platforms, application
+                integration, and enterprise
+                development workflows.
+              </motion.p>
+
+            </motion.div>
+
+
+            <motion.div
+              className="experience-modules"
+
+              variants={stagger}
+
+              initial="hidden"
+
+              whileInView="visible"
+
+              viewport={{
+                once: true,
+                amount: 0.25,
+              }}
+            >
+
+              <ExperienceModule
+                number="01"
+                label="Cloud Platform"
+                value="SAP BTP"
+              />
+
+              <ExperienceModule
+                number="02"
+                label="Development"
+                value="SAP ABAP"
+              />
+
+              <ExperienceModule
+                number="03"
+                label="Integration"
+                value="SAP PI / PO"
+              />
+
+              <ExperienceModule
+                number="04"
+                label="Enterprise Integration"
+                value="Integration Suite"
+              />
+
+            </motion.div>
 
           </div>
 
-        </motion.div>
+
+          <motion.div
+            className="experience-timeline"
+
+            initial={{
+              opacity: 0,
+              y: 18,
+            }}
+
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+
+            viewport={{
+              once: true,
+            }}
+
+            transition={{
+              duration: 0.85,
+              delay: 0.42,
+              ease,
+            }}
+          >
+
+            <div className="experience-timeline-line">
+
+              <motion.span
+                initial={{
+                  scaleX: 0,
+                }}
+
+                whileInView={{
+                  scaleX: 1,
+                }}
+
+                viewport={{
+                  once: true,
+                }}
+
+                transition={{
+                  duration: 1.25,
+                  delay: 0.55,
+                  ease,
+                }}
+              />
+
+            </div>
+
+
+            <div className="experience-timeline-items">
+
+              <div>
+                <span>01</span>
+                <p>Foundations</p>
+              </div>
+
+              <div>
+                <span>02</span>
+                <p>Hands-on Learning</p>
+              </div>
+
+              <div>
+                <span>03</span>
+                <p>Integration</p>
+              </div>
+
+              <div>
+                <span>04</span>
+                <p>Completion</p>
+              </div>
+
+            </div>
+
+          </motion.div>
+
+        </motion.article>
 
       </section>
 
@@ -2811,6 +3066,46 @@ function Capability({
       >
         ↗
       </motion.span>
+
+    </motion.div>
+  )
+}
+
+
+function ExperienceModule({
+  number,
+  label,
+  value,
+}) {
+  return (
+    <motion.div
+      className="experience-module"
+      variants={blurReveal}
+      whileHover={{
+        x: 6,
+      }}
+      transition={{
+        duration: 0.3,
+        ease,
+      }}
+    >
+
+      <span className="experience-module-number">
+        {number}
+      </span>
+
+
+      <div>
+
+        <p>
+          {label}
+        </p>
+
+        <h4>
+          {value}
+        </h4>
+
+      </div>
 
     </motion.div>
   )
