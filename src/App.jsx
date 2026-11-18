@@ -2099,7 +2099,7 @@ function Project({
     useTransform(
       scrollYProgress,
       [0, 1],
-      [35, -35]
+      [24, -24]
     )
 
 
@@ -2108,9 +2108,9 @@ function Project({
       scrollYProgress,
       [0, 0.5, 1],
       [
-        0.985,
+        0.992,
         1,
-        0.985,
+        0.992,
       ]
     )
 
@@ -2119,7 +2119,7 @@ function Project({
     useTransform(
       scrollYProgress,
       [0, 1],
-      [15, -15]
+      [10, -10]
     )
 
 
@@ -2149,12 +2149,14 @@ function Project({
 
       initial={{
         opacity: 0,
-        y: 35,
+        y: 58,
+        filter: 'blur(12px)',
       }}
 
       whileInView={{
         opacity: 1,
         y: 0,
+        filter: 'blur(0px)',
       }}
 
       viewport={{
@@ -2163,7 +2165,7 @@ function Project({
       }}
 
       transition={{
-        duration: 0.85,
+        duration: 1,
         ease,
       }}
 
@@ -2176,7 +2178,30 @@ function Project({
       }
     >
 
-      <div className="project-top">
+      <motion.div
+        className="project-top"
+
+        initial={{
+          opacity: 0,
+          y: 14,
+        }}
+
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+
+        viewport={{
+          once: true,
+          amount: 0.5,
+        }}
+
+        transition={{
+          duration: 0.75,
+          delay: 0.08,
+          ease,
+        }}
+      >
 
         <span className="project-number">
           {project.number}
@@ -2192,7 +2217,7 @@ function Project({
           {project.year}
         </span>
 
-      </div>
+      </motion.div>
 
 
       <motion.div
@@ -2207,8 +2232,27 @@ function Project({
           scale: visualScale,
         }}
 
-        whileHover={{
-          scale: 0.994,
+        initial={{
+          opacity: 0,
+          clipPath:
+            'inset(7% 0% 7% 0%)',
+        }}
+
+        whileInView={{
+          opacity: 1,
+          clipPath:
+            'inset(0% 0% 0% 0%)',
+        }}
+
+        viewport={{
+          once: true,
+          amount: 0.18,
+        }}
+
+        transition={{
+          duration: 1.05,
+          delay: 0.06,
+          ease,
         }}
       >
 
@@ -2238,36 +2282,42 @@ function Project({
 
                   initial={{
                     opacity: 0,
+                    x:
+                      preserveImageRatio
+                        ? 0
+                        : 10,
                     scale:
                       preserveImageRatio
                         ? 1
-                        : 1.035,
+                        : 1.018,
                     filter:
-                      'blur(8px)',
+                      'blur(7px)',
                   }}
 
                   animate={{
                     opacity: 1,
-                    scale:
-                      preserveImageRatio
-                        ? 1
-                        : [1.018, 1],
+                    x: 0,
+                    scale: 1,
                     filter:
                       'blur(0px)',
                   }}
 
                   exit={{
                     opacity: 0,
+                    x:
+                      preserveImageRatio
+                        ? 0
+                        : -8,
                     scale:
                       preserveImageRatio
                         ? 1
-                        : 0.985,
+                        : 0.995,
                     filter:
-                      'blur(5px)',
+                      'blur(4px)',
                   }}
 
                   transition={{
-                    duration: 0.6,
+                    duration: 0.68,
                     ease,
                   }}
                 />
@@ -2285,27 +2335,47 @@ function Project({
 
               initial={{
                 opacity: 0,
-                y: 18,
               }}
 
               whileInView={{
                 opacity: 1,
-                y: 0,
               }}
 
               viewport={{
                 once: true,
-                amount: 0.35,
+                amount: 0.3,
               }}
 
               transition={{
                 duration: 0.8,
-                delay: 0.15,
+                delay: 0.16,
                 ease,
               }}
             >
 
-              <div className="project-overlay-top">
+              <motion.div
+                className="project-overlay-top"
+
+                initial={{
+                  opacity: 0,
+                  y: -10,
+                }}
+
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+
+                viewport={{
+                  once: true,
+                }}
+
+                transition={{
+                  duration: 0.7,
+                  delay: 0.22,
+                  ease,
+                }}
+              >
 
                 <span>
                   P/C PROJECT
@@ -2315,49 +2385,164 @@ function Project({
                   {project.number}
                 </span>
 
-              </div>
+              </motion.div>
 
 
               <div className="project-overlay-main">
 
-                <p className="project-overlay-kicker">
+                <motion.p
+                  className="project-overlay-kicker"
+
+                  initial={{
+                    opacity: 0,
+                    y: 12,
+                    filter:
+                      'blur(6px)',
+                  }}
+
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                    filter:
+                      'blur(0px)',
+                  }}
+
+                  viewport={{
+                    once: true,
+                  }}
+
+                  transition={{
+                    duration: 0.7,
+                    delay: 0.2,
+                    ease,
+                  }}
+                >
                   {project.type}
-                </p>
+                </motion.p>
 
 
-                <h2>
+                <motion.h2
+                  initial={{
+                    opacity: 0,
+                    y: 26,
+                    filter:
+                      'blur(9px)',
+                  }}
+
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                    filter:
+                      'blur(0px)',
+                  }}
+
+                  viewport={{
+                    once: true,
+                  }}
+
+                  transition={{
+                    duration: 0.9,
+                    delay: 0.28,
+                    ease,
+                  }}
+                >
                   {project.title}
-                </h2>
+                </motion.h2>
 
 
-                <p className="project-overlay-description">
+                <motion.p
+                  className="project-overlay-description"
+
+                  initial={{
+                    opacity: 0,
+                    y: 18,
+                    filter:
+                      'blur(7px)',
+                  }}
+
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                    filter:
+                      'blur(0px)',
+                  }}
+
+                  viewport={{
+                    once: true,
+                  }}
+
+                  transition={{
+                    duration: 0.85,
+                    delay: 0.38,
+                    ease,
+                  }}
+                >
                   {project.description}
-                </p>
-
-
-                <p className="project-overlay-tech">
-                  {project.tech}
-                </p>
+                </motion.p>
 
               </div>
 
 
-              <div className="project-overlay-bottom">
+              <motion.div
+                className="project-overlay-bottom"
+
+                initial={{
+                  opacity: 0,
+                  y: 10,
+                }}
+
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+
+                viewport={{
+                  once: true,
+                }}
+
+                transition={{
+                  duration: 0.7,
+                  delay: 0.46,
+                  ease,
+                }}
+              >
 
                 <span>
-                  Project Preview
+                  Selected Work
                 </span>
 
                 <span>
-                  View Case Study ↗
+                  Interface Preview
                 </span>
 
-              </div>
+              </motion.div>
 
             </motion.div>
 
 
-            <div className="project-slide-status">
+            <motion.div
+              className="project-slide-status"
+
+              initial={{
+                opacity: 0,
+                y: 8,
+              }}
+
+              whileInView={{
+                opacity: 0.82,
+                y: 0,
+              }}
+
+              viewport={{
+                once: true,
+              }}
+
+              transition={{
+                duration: 0.7,
+                delay: 0.55,
+                ease,
+              }}
+            >
 
               <span className="project-slide-count">
                 {String(
@@ -2400,7 +2585,7 @@ function Project({
 
               </div>
 
-            </div>
+            </motion.div>
           </>
         ) : (
           <>
@@ -2428,8 +2613,27 @@ function Project({
                 y: titleY,
               }}
 
-              whileHover={{
-                x: 10,
+              initial={{
+                opacity: 0,
+                y: 24,
+                filter:
+                  'blur(8px)',
+              }}
+
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                filter:
+                  'blur(0px)',
+              }}
+
+              viewport={{
+                once: true,
+              }}
+
+              transition={{
+                duration: 0.9,
+                ease,
               }}
             >
               {project.title}
@@ -2439,12 +2643,12 @@ function Project({
             <div className="visual-bottom">
 
               <span>
-                View Case Study
+                Selected Work
               </span>
 
 
               <span>
-                ↗
+                Interface Preview
               </span>
 
             </div>
@@ -2454,22 +2658,64 @@ function Project({
       </motion.div>
 
 
-      <div className="project-details">
+      <motion.div
+        className="project-footer-meta"
 
-        <p className="project-description">
-          {project.description}
-        </p>
+        initial={{
+          opacity: 0,
+          y: 18,
+          filter: 'blur(6px)',
+        }}
+
+        whileInView={{
+          opacity: 1,
+          y: 0,
+          filter: 'blur(0px)',
+        }}
+
+        viewport={{
+          once: true,
+          amount: 0.6,
+        }}
+
+        transition={{
+          duration: 0.8,
+          delay: 0.12,
+          ease,
+        }}
+      >
+
+        <div className="project-footer-item">
+
+          <span>
+            Stack
+          </span>
+
+          <p>
+            {project.tech}
+          </p>
+
+        </div>
 
 
-        <p className="project-tech">
-          {project.tech}
-        </p>
+        <div className="project-footer-item project-footer-project">
 
-      </div>
+          <span>
+            Project
+          </span>
+
+          <p>
+            {project.number} / {project.year}
+          </p>
+
+        </div>
+
+      </motion.div>
 
     </motion.article>
   )
 }
+
 
 
 
