@@ -1263,16 +1263,16 @@ function App() {
         >
 
           <h2>
-            Learning beyond
-            <span> the classroom.</span>
+            Credentials that
+            <span> support the work.</span>
           </h2>
 
 
           <p>
-            Continuing to strengthen my technical
-            foundation through professional learning
-            in networking, emerging technology,
-            and modern digital workflows.
+            Cisco networking and Google AI training
+            complement my academic and project
+            experience with practical technical
+            foundations.
           </p>
 
         </motion.div>
@@ -1806,8 +1806,8 @@ function App() {
               <motion.h3
                 variants={blurReveal}
               >
-                Learning enterprise systems
-                <em> beyond the classroom.</em>
+                Enterprise systems,
+                <em> in practice.</em>
               </motion.h3>
 
 
@@ -1963,199 +1963,221 @@ function App() {
 
         <SectionTop
           left="08 / Contact"
-          right="● Open for work & freelance"
+          right="Available / Manila"
           accentRight
         />
 
 
-        <div className="contact-layout">
-
-          <div className="contact-heading">
-
-            <div className="contact-mask">
-
-              <motion.h2
-                initial={{
-                  y: '110%',
-                  opacity: 0,
-                  filter: 'blur(10px)',
-                }}
-
-                whileInView={{
-                  y: 0,
-                  opacity: 1,
-                  filter: 'blur(0px)',
-                }}
-
-                viewport={{
-                  once: true,
-                  amount: 0.5,
-                }}
-
-                transition={{
-                  duration: 1,
-                  ease,
-                }}
-              >
-                LET&apos;S BUILD
-              </motion.h2>
-
-            </div>
-
-
-            <div className="contact-mask">
-
-              <motion.h2
-                className="contact-serif"
-
-                initial={{
-                  y: '110%',
-                  opacity: 0,
-                  filter: 'blur(10px)',
-                }}
-
-                whileInView={{
-                  y: 0,
-                  opacity: 1,
-                  filter: 'blur(0px)',
-                }}
-
-                viewport={{
-                  once: true,
-                  amount: 0.5,
-                }}
-
-                transition={{
-                  duration: 1,
-                  delay: 0.08,
-                  ease,
-                }}
-              >
-                something meaningful.
-              </motion.h2>
-
-            </div>
-
-          </div>
-
-
-          <motion.div
-            className="contact-side"
-
-            initial={{
-              opacity: 0,
-              y: 24,
-              filter: 'blur(8px)',
-            }}
-
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              filter: 'blur(0px)',
-            }}
-
-            viewport={{
-              once: true,
-              amount: 0.4,
-            }}
-
-            transition={{
-              duration: 0.9,
-              delay: 0.15,
-              ease,
-            }}
-          >
-
-            <p className="contact-eyebrow">
-              HAVE SOMETHING IN MIND?
-            </p>
-
-
-            <p className="contact-description">
-              Whether it&apos;s a full-time
-              opportunity, freelance project,
-              website, interface, or creative
-              idea, I&apos;m open to building
-              something thoughtful together.
-            </p>
-
-
-            <motion.a
-              href="mailto:carlpierre231@gmail.com"
-              className="contact-email"
-
-              whileHover={{
-                x: 5,
-              }}
-            >
-              Start a conversation ↗
-            </motion.a>
-
-          </motion.div>
-
-        </div>
-
-
         <motion.div
-          className="contact-bottom"
+          className="contact-shell"
 
           initial={{
             opacity: 0,
-            y: 20,
+            y: 42,
+            filter: 'blur(12px)',
           }}
 
           whileInView={{
             opacity: 1,
             y: 0,
+            filter: 'blur(0px)',
           }}
 
           viewport={{
             once: true,
+            amount: 0.18,
           }}
 
           transition={{
-            duration: 0.8,
-            delay: 0.25,
+            duration: 1,
             ease,
           }}
         >
 
-          <a
-            href="mailto:carlpierre231@gmail.com"
-            className="contact-address"
+          <div className="contact-grid-bg" />
+
+
+          <motion.div
+            className="contact-orbit"
+
+            initial={{
+              opacity: 0,
+              scale: 0.82,
+              rotate: -16,
+            }}
+
+            whileInView={{
+              opacity: 1,
+              scale: 1,
+              rotate: 0,
+            }}
+
+            viewport={{
+              once: true,
+            }}
+
+            transition={{
+              duration: 1.25,
+              delay: 0.25,
+              ease,
+            }}
           >
-            carlpierre231@gmail.com ↗
-          </a>
+
+            <motion.span
+              animate={{
+                rotate: 360,
+              }}
+
+              transition={{
+                duration: 24,
+                repeat: Infinity,
+                ease: 'linear',
+              }}
+            />
+
+            <i />
+
+          </motion.div>
 
 
-          <div className="social-links">
+          <div className="contact-main">
 
-            <motion.a
-              href="https://github.com/iluvreze"
-              target="_blank"
-              rel="noreferrer"
+            <motion.div
+              className="contact-heading"
 
-              whileHover={{
-                y: -3,
+              variants={stagger}
+
+              initial="hidden"
+
+              whileInView="visible"
+
+              viewport={{
+                once: true,
+                amount: 0.3,
               }}
             >
-              GitHub ↗
-            </motion.a>
+
+              <motion.p
+                className="contact-kicker"
+                variants={blurReveal}
+              >
+                OPEN FOR OPPORTUNITIES
+              </motion.p>
 
 
-            <motion.a
-              href="https://www.linkedin.com/in/pierre-carl-tolentino/"
-              target="_blank"
-              rel="noreferrer"
+              <motion.h2
+                variants={blurReveal}
+              >
+                LET&apos;S
+                <span> TALK.</span>
+              </motion.h2>
 
-              whileHover={{
-                y: -3,
+
+              <motion.p
+                className="contact-note"
+                variants={blurReveal}
+              >
+                Full-time roles, freelance work,
+                and thoughtful digital projects.
+              </motion.p>
+
+            </motion.div>
+
+
+            <motion.div
+              className="contact-action"
+
+              initial={{
+                opacity: 0,
+                y: 24,
+                filter: 'blur(8px)',
+              }}
+
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                filter: 'blur(0px)',
+              }}
+
+              viewport={{
+                once: true,
+                amount: 0.35,
+              }}
+
+              transition={{
+                duration: 0.85,
+                delay: 0.18,
+                ease,
               }}
             >
-              LinkedIn ↗
-            </motion.a>
+
+              <p>
+                EMAIL
+              </p>
+
+
+              <motion.a
+                href="mailto:carlpierre231@gmail.com"
+
+                whileHover={{
+                  x: 8,
+                }}
+
+                transition={{
+                  duration: 0.28,
+                  ease,
+                }}
+              >
+                carlpierre231@gmail.com
+                <span>↗</span>
+              </motion.a>
+
+            </motion.div>
 
           </div>
+
+
+          <motion.div
+            className="contact-links"
+
+            variants={stagger}
+
+            initial="hidden"
+
+            whileInView="visible"
+
+            viewport={{
+              once: true,
+              amount: 0.3,
+            }}
+          >
+
+            <ContactLink
+              index="01"
+              label="Email"
+              value="Start a conversation"
+              href="mailto:carlpierre231@gmail.com"
+            />
+
+
+            <ContactLink
+              index="02"
+              label="GitHub"
+              value="iluvreze"
+              href="https://github.com/iluvreze"
+              external
+            />
+
+
+            <ContactLink
+              index="03"
+              label="LinkedIn"
+              value="Pierre Carl Tolentino"
+              href="https://www.linkedin.com/in/pierre-carl-tolentino/"
+              external
+            />
+
+          </motion.div>
 
         </motion.div>
 
@@ -2199,30 +2221,44 @@ function SectionTop({
   right,
   accentRight = false,
 }) {
+  const [
+    sectionNumber,
+    sectionName,
+  ] = left.includes(' / ')
+    ? left.split(' / ')
+    : ['', left]
+
+
   return (
     <motion.div
       className="section-top"
 
       initial={{
         opacity: 0,
+        y: 12,
         filter: 'blur(8px)',
       }}
 
       whileInView={{
         opacity: 1,
+        y: 0,
         filter: 'blur(0px)',
       }}
 
       viewport={{
         once: true,
+        amount: 0.6,
       }}
 
       transition={{
-        duration: 0.8,
+        duration: 0.75,
+        ease,
       }}
     >
 
       <motion.p
+        className="section-top-left"
+
         initial={{
           x: -18,
           opacity: 0,
@@ -2238,11 +2274,21 @@ function SectionTop({
         }}
 
         transition={{
-          duration: 0.8,
+          duration: 0.75,
           ease,
         }}
       >
-        {left}
+
+        {sectionNumber && (
+          <span className="section-top-number">
+            {sectionNumber}
+          </span>
+        )}
+
+        <span className="section-top-name">
+          {sectionName}
+        </span>
+
       </motion.p>
 
 
@@ -2268,12 +2314,35 @@ function SectionTop({
         }}
 
         transition={{
-          duration: 0.8,
+          duration: 0.75,
           ease,
         }}
       >
         {right}
       </motion.p>
+
+
+      <motion.span
+        className="section-top-line"
+
+        initial={{
+          scaleX: 0,
+        }}
+
+        whileInView={{
+          scaleX: 1,
+        }}
+
+        viewport={{
+          once: true,
+        }}
+
+        transition={{
+          duration: 1,
+          delay: 0.1,
+          ease,
+        }}
+      />
 
     </motion.div>
   )
@@ -3070,6 +3139,78 @@ function Capability({
     </motion.div>
   )
 }
+
+
+function ContactLink({
+  index,
+  label,
+  value,
+  href,
+  external = false,
+}) {
+  return (
+    <motion.a
+      className="contact-link-row"
+
+      href={href}
+
+      target={
+        external
+          ? '_blank'
+          : undefined
+      }
+
+      rel={
+        external
+          ? 'noreferrer'
+          : undefined
+      }
+
+      variants={blurReveal}
+
+      whileHover={{
+        x: 8,
+      }}
+
+      transition={{
+        duration: 0.28,
+        ease,
+      }}
+    >
+
+      <span className="contact-link-index">
+        {index}
+      </span>
+
+
+      <div>
+
+        <p>
+          {label}
+        </p>
+
+        <h3>
+          {value}
+        </h3>
+
+      </div>
+
+
+      <motion.span
+        className="contact-link-arrow"
+
+        whileHover={{
+          x: 3,
+          y: -3,
+        }}
+      >
+        ↗
+      </motion.span>
+
+    </motion.a>
+  )
+}
+
 
 
 function ExperienceModule({
