@@ -14,6 +14,10 @@ import drafters2 from './assets/df2.png'
 import drafters3 from './assets/df3.jpg'
 import drafters4 from './assets/df4.jpg'
 
+import pc1 from './assets/pc1.png'
+import pc2 from './assets/pc2.png'
+import pc3 from './assets/pc3.png'
+
 import {
   AnimatePresence,
   motion,
@@ -113,15 +117,21 @@ const projects = [
 
   {
     number: '03',
-    title: 'Pet Paw',
-    type: 'Store & Inventory Management',
+    title: 'PCTechno',
+    type: 'Inventory Management System',
     year: '2025',
 
     description:
-      'A web-based management system combining visual interface design with inventory functionality, database integration, and responsive frontend development.',
+      'A web-based inventory management system developed as an academic project to improve product monitoring and reduce errors from manual record-keeping. The system uses a centralized database for structured inventory data, supports CRUD operations and authentication, and provides role-based access for administrators, employees, and cashiers.',
 
     tech:
-      'HTML · CSS · JavaScript · PHP · MySQL',
+      'PHP · MySQL · HTML · CSS · JavaScript',
+
+    images: [
+      pc1,
+      pc2,
+      pc3,
+    ],
   },
 ]
 
